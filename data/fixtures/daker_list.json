@@ -1,0 +1,4 @@
+[
+  {"id":"00000000-0000-0000-0000-000000000001","title":"가상 금융 AI 에이전트 공모전","slug":"virtual-finance-ai-agent","tagline":"금융 업무를 돕는 AI Agent를 기획하고 MVP로 구현","status":"published","organizerName":"가상투자공사","totalPrize":"15000000","registrationDeadline":"2026-11-12T01:00:00.000Z","startDate":"2026-10-01T01:00:00.000Z","endDate":"2027-01-11T09:00:00.000Z","competitionType":"development","taskCategory":null,"isPracticeMode":false,"isPrivate":false},
+  {"id":"00000000-0000-0000-0000-000000000002","title":"가상 비공개 AI 해커톤","slug":"virtual-private","tagline":"비공개 대회","status":"published","organizerName":"가상기관","totalPrize":"0","registrationDeadline":"2026-11-30T01:00:00.000Z","startDate":"2026-10-01T01:00:00.000Z","endDate":"2026-12-01T01:00:00.000Z","competitionType":"development","taskCategory":null,"isPracticeMode":false,"isPrivate":true}
+]

@@ -1,0 +1,6 @@
+langgraph>=1.0
+pydantic>=2
+python-dotenv
+# LLM 은 하나만 골라 설치 (LLM_PROVIDER 와 맞추기). 없어도 규칙 기반으로 동작한다.
+langchain-google-genai
+# langchain-openai

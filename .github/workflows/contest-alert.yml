@@ -1,0 +1,81 @@
+# AI 공모전 카카오톡 알림 — 매주 월·목 오전 9시(KST) 자동 실행
+#
+# 필요한 설정 (저장소 Settings → Secrets and variables → Actions)
+#   Secrets  : KAKAO_REST_API_KEY, KAKAO_CLIENT_SECRET, KAKAO_REFRESH_TOKEN
+#              GH_PAT (선택: 카카오 리프레시 토큰이 바뀌면 KAKAO_REFRESH_TOKEN 을 자동 갱신)
+#              GOOGLE_API_KEY (선택: LLM 사용)
+#   Variables: PAGES_BASE_URL (예: https://uhyon.github.io/contest-pages)
+#              INTERESTS (선택, 기본 "AI 개발,데이터 분석,머신러닝")
+name: contest-alert
+
+on:
+  schedule:
+    - cron: "0 0 * * 1,4"   # UTC 00:00 = KST 09:00, 월(1)·목(4). GitHub 사정으로 몇십 분 늦을 수 있음
+  workflow_dispatch:        # Actions 탭에서 'Run workflow' 로 바로 실행
+
+permissions:
+  contents: write           # 상세 페이지(docs/)와 보낸 기록(data/sent.json)을 커밋
+
+concurrency:
+  group: contest-alert
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Seoul
+      DRY_RUN: "0"
+      PAGES_DIR: docs
+      PAGES_PUBLISH: git
+      PAGES_BASE_URL: ${{ vars.PAGES_BASE_URL }}
+      INTERESTS: ${{ vars.INTERESTS || 'AI 개발,데이터 분석,머신러닝' }}
+      LLM_PROVIDER: ${{ secrets.GOOGLE_API_KEY != '' && 'gemini' || 'none' }}
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+      KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+      KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+      HAS_GH_PAT: ${{ secrets.GH_PAT != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Configure git (for publishing pages)
+        run: |
+          git config user.name "contest-alert-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Run agent (collect → validate → pages → Kakao)
+        run: python main.py --auto-send
+
+      - name: Save sent history
+        if: always()
+        run: |
+          git add data/sent.json docs || true
+          if ! git diff --cached --quiet; then
+            git commit -m "sent history: $(date +%F)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Rotate Kakao refresh token secret
+        if: always() && env.HAS_GH_PAT == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          NEW=$(python -c "import json;print(json.load(open('data/.kakao_token.json')).get('refresh_token',''))" 2>/dev/null || true)
+          if [ -n "$NEW" ] && [ "$NEW" != "$KAKAO_REFRESH_TOKEN" ]; then
+            echo "::add-mask::$NEW"
+            printf '%s' "$NEW" | gh secret set KAKAO_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+            echo "KAKAO_REFRESH_TOKEN 갱신 완료"
+          else
+            echo "리프레시 토큰 변경 없음"
+          fi

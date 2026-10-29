@@ -1,0 +1,13 @@
+{"id":"00000000-0000-0000-0000-000000000001","slug":"virtual-finance-ai-agent","title":"가상 금융 AI 에이전트 공모전","eligibility":"anyone","minTeamSize":1,"maxTeamSize":5,"totalPrize":"15000000",
+ "description":"<h2><strong>[배경 및 목적]</strong></h2><p>금융 업무를 돕는 AI 에이전트를 기획합니다.</p>",
+ "rules":"<h2><strong>[개인 또는 팀 참여 규칙]</strong></h2><ul><li class=\"leading-relaxed\"><p>팀 최대 인원 : <strong>최대 5인</strong></p></li><li><p>예선 제출 기한 : ~ 2026년 11월 12일(목) 10:00</p></li></ul><p><a href=\"/files/form.pdf\">양식 다운로드</a> <a href=\"javascript:alert(1)\">나쁜 링크</a></p>",
+ "schedule":null,
+ "prizeDescription":"<h2><strong>[총상금: 1,500만원]</strong></h2><table><tr><td>최우수상</td><td>1팀</td><td>600만원</td></tr><tr><td>우수상</td><td>2팀</td><td>각 300만원</td></tr></table>",
+ "evaluationCriteria":"<p>기획서 정성 평가 70% + 상호 평가 30%</p>",
+ "dataDescription":"<p>별도 데이터셋을 제공하지 않습니다.</p>",
+ "consentTerms":"<p>동의사항 본문</p>",
+ "stages":[
+  {"name":"참가 접수","stageOrder":1,"startDate":"2026-10-01T01:00:00.000Z","endDate":"2026-11-12T01:00:00.000Z"},
+  {"name":"예선 결과 발표","stageOrder":2,"startDate":"2026-12-03T01:00:00.000Z","endDate":"2026-12-03T01:01:00.000Z"},
+  {"name":"본선 산출물 제출","stageOrder":3,"startDate":"2026-12-03T01:00:00.000Z","endDate":"2026-12-22T01:00:00.000Z"}
+ ]}

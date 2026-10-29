@@ -1,0 +1,199 @@
+{
+  "today": "2026-11-02",
+  "rule_cases": [
+    {
+      "id": "R01",
+      "desc": "정상 공고",
+      "item": {
+        "title": "AI 창업 아이디어 공모전 2026",
+        "provider": "가상창업진흥원",
+        "target": "스타트업",
+        "raw_date": "2026.11.30",
+        "url": "https://example.com/a"
+      },
+      "expected_visible": true,
+      "expected_end_date": "2026-11-30"
+    },
+    {
+      "id": "R02",
+      "desc": "마감 지난 공고",
+      "item": {
+        "title": "AI 경진대회 2025",
+        "provider": "어떤기관",
+        "target": "학생",
+        "raw_date": "2025-11-01",
+        "url": "https://example.com/b"
+      },
+      "expected_visible": false,
+      "expected_reason": "expired"
+    },
+    {
+      "id": "R03",
+      "desc": "링크 누락",
+      "item": {
+        "title": "AI 데이터톤",
+        "provider": "가상데이터원",
+        "raw_date": "2026.12.01",
+        "url": ""
+      },
+      "expected_visible": false,
+      "expected_reason": "missing_field"
+    },
+    {
+      "id": "R04",
+      "desc": "상대경로 링크",
+      "item": {
+        "title": "AI 아트 공모",
+        "provider": "가상문화재단",
+        "raw_date": "2026.12.01",
+        "url": "/notice/123"
+      },
+      "expected_visible": false,
+      "expected_reason": "bad_url"
+    },
+    {
+      "id": "R05",
+      "desc": "날짜 파싱 불가",
+      "item": {
+        "title": "AI 에세이 공모",
+        "provider": "가상연구소",
+        "raw_date": "상시(추후 공지)",
+        "url": "https://example.com/c"
+      },
+      "expected_visible": false,
+      "expected_reason": "bad_date"
+    },
+    {
+      "id": "R06",
+      "desc": "한글 날짜 표기",
+      "item": {
+        "title": "AI 해커톤",
+        "provider": "가상시청",
+        "raw_date": "2026년 11월 9일까지",
+        "url": "https://example.com/d"
+      },
+      "expected_visible": true,
+      "expected_end_date": "2026-11-09",
+      "expected_badge": "이번 주 마감"
+    },
+    {
+      "id": "R07",
+      "desc": "오늘 마감(연도 없는 표기)",
+      "item": {
+        "title": "청년 AI 영상전",
+        "provider": "가상미디어",
+        "raw_date": "~ 11/2",
+        "url": "https://example.com/e"
+      },
+      "expected_visible": true,
+      "expected_end_date": "2026-11-02",
+      "expected_badge": "오늘 마감"
+    }
+  ],
+  "dedupe_case": {
+    "desc": "꾸밈말만 다른 같은 공고는 1건만 남아야 한다",
+    "items": [
+      {
+        "title": "제3회 한빛 AI 공모전 참가자 모집",
+        "provider": "한빛AI재단",
+        "raw_date": "2026.11.20",
+        "url": "https://example.com/x"
+      },
+      {
+        "title": "[재공지] 제3회 한빛 AI 공모전",
+        "provider": "한빛AI재단",
+        "raw_date": "2026년 11월 20일",
+        "url": "https://blog.example.com/y"
+      }
+    ],
+    "expected_valid": 1
+  },
+  "e2e_expected": {
+    "visible_titles": [
+      "가상 날씨 AI 해커톤",
+      "가상 데이터 시각화 챌린지",
+      "가상 금융 AI 에이전트 공모전",
+      "가상 항만 물동량 예측 AI 경진대회"
+    ],
+    "hidden_titles": [
+      "가상 음성 딥러닝 경진대회",
+      "가상 오픈소스 컨트리뷰톤",
+      "가상 AI 밋업",
+      "가상 상대경로 AI 해커톤",
+      "가상 지난 AI 해커톤",
+      "가상 비공개 AI 해커톤"
+    ],
+    "min_attempts": 2,
+    "rejected_reasons": {
+      "expired": 1,
+      "duplicate": 1,
+      "bad_url": 1
+    },
+    "summary": {
+      "가상 금융 AI 에이전트 공모전": {
+        "rules": "팀 최대 5인",
+        "schedule": "11/12(목) 10:00",
+        "prize": "총 1,500만원"
+      },
+      "가상 항만 물동량 예측 AI 경진대회": {
+        "rules": "팀 최대 4인",
+        "schedule": "11/20(금) 10:00",
+        "prize": "총 1,000만원"
+      },
+      "가상 날씨 AI 해커톤": {
+        "rules": "개인 참가만 가능",
+        "prize": "정보 없음"
+      }
+    },
+    "no_info_section": {
+      "title": "가상 날씨 AI 해커톤",
+      "section": "prize"
+    },
+    "empty_today": "2027-12-31"
+  },
+  "dedupe_url_case": {
+    "desc": "주최명이 달라도 원문 링크가 같으면 1건만 남아야 한다 (Dev-Event 재게시)",
+    "items": [
+      {
+        "title": "가상 AI 공모전",
+        "provider": "가상투자공사",
+        "raw_date": "2026-11-12 10:00",
+        "url": "https://daker.ai/public/hackathons/x"
+      },
+      {
+        "title": "가상 AI 공모전",
+        "provider": "가상투자공사(KIC)",
+        "raw_date": "11. 12(목) 10:00",
+        "url": "https://daker.ai/public/hackathons/x/"
+      }
+    ],
+    "expected_valid": 1
+  },
+  "grounded_cases": [
+    {
+      "id": "G01",
+      "line": "총 1,500만원",
+      "source": "[총상금: 1,500만원]",
+      "expected": true
+    },
+    {
+      "id": "G02",
+      "line": "총 3,000만원",
+      "source": "[총상금: 1,500만원]",
+      "expected": false,
+      "desc": "원문에 없는 금액(LLM 추측) 차단"
+    },
+    {
+      "id": "G03",
+      "line": "마감 11/12(목) 10:00",
+      "source": "제출 기한 : ~ 2026년 11월 12일(목) 10:00",
+      "expected": true
+    },
+    {
+      "id": "G04",
+      "line": "정보 없음",
+      "source": "",
+      "expected": true
+    }
+  ]
+}
