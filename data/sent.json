@@ -19,6 +19,11 @@
   "sent_at": "2026-11-02",
   "title": "국부펀드 KIC, AI 에이전트 공모전"
  },
+ "https://hackon.kr/e/002e1704": {
+  "end_date": "2026-11-16",
+  "sent_at": "2026-11-16",
+  "title": "Korea Local Marketing Hackathon 2026"
+ },
  "https://hackon.kr/e/1a32b615": {
   "end_date": "2026-10-31",
   "sent_at": "2026-10-29",
@@ -34,9 +39,29 @@
   "sent_at": "2026-10-29",
   "title": "c0mpiled-17: Seoul"
  },
+ "https://luma.com/z8hzosog": {
+  "end_date": "2026-11-21",
+  "sent_at": "2026-11-16",
+  "title": "[2회차] 디노티시아 NIPA 오픈소스 해커톤"
+ },
+ "https://wma.co.kr/ax": {
+  "end_date": "2026-11-20",
+  "sent_at": "2026-11-16",
+  "title": "2026 사회보장 데이터를 활용한 AI 혁신 아이디어 경진대회"
+ },
+ "https://www.dcnc.or.kr/bbs/board.php?bo_table=notice&wr_id=193": {
+  "end_date": "2026-11-20",
+  "sent_at": "2026-11-16",
+  "title": "2026 대구광역시 기후·환경·탄소중립 공공데이터 AI 활용대회"
+ },
  "https://www.keit.re.kr/board.es?mid=a10301010000&bid=0009&act=view&list_no=128385": {
   "end_date": "2026-10-31",
   "sent_at": "2026-10-29",
   "title": "2026년 AI 라이프 솔루션 챌린지"
+ },
+ "https://www.mogefdatacontest.co.kr": {
+  "end_date": "2026-11-20",
+  "sent_at": "2026-11-16",
+  "title": "2026 성평등 AI 벤치마크 챌린지"
  }
 }
