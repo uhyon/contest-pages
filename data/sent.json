@@ -19,6 +19,16 @@
   "sent_at": "2026-11-02",
   "title": "국부펀드 KIC, AI 에이전트 공모전"
  },
+ "https://edu.bccard.ai/contest": {
+  "end_date": "2026-12-03",
+  "sent_at": "2026-11-19",
+  "title": "eat.pl 잇플 수익화 챌린지 (K-SKILL × EAT.PL)"
+ },
+ "https://event-us.kr/gdgcampuskorea/event/138371": {
+  "end_date": "2026-11-27",
+  "sent_at": "2026-11-19",
+  "title": "2026 Devfest: AFK - Away From Keyboard"
+ },
  "https://hackon.kr/e/002e1704": {
   "end_date": "2026-11-16",
   "sent_at": "2026-11-16",
@@ -34,15 +44,30 @@
   "sent_at": "2026-10-29",
   "title": "젝커톤 2026 | 젝트 X 스위프 AI 해커톤"
  },
+ "https://luma.com/aisecurityseoul": {
+  "end_date": "2026-12-11",
+  "sent_at": "2026-11-19",
+  "title": "Capture, Explain, Defend — AI Cybersecurity Hackathon"
+ },
  "https://luma.com/compiled-8lsr": {
   "end_date": "2026-10-30",
   "sent_at": "2026-10-29",
   "title": "c0mpiled-17: Seoul"
  },
+ "https://luma.com/vc6rmvaz": {
+  "end_date": "2026-11-21",
+  "sent_at": "2026-11-19",
+  "title": "Notion AI Hackathon Seoul"
+ },
  "https://luma.com/z8hzosog": {
   "end_date": "2026-11-21",
   "sent_at": "2026-11-16",
   "title": "[2회차] 디노티시아 NIPA 오픈소스 해커톤"
+ },
+ "https://prompt2026.sto.or.kr": {
+  "end_date": "2026-11-29",
+  "sent_at": "2026-11-19",
+  "title": "2026 서울관광 프롬프톤 (Seoul Tourism Prompt-thon)"
  },
  "https://wma.co.kr/ax": {
   "end_date": "2026-11-20",
